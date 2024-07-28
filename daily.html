@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Revenue</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        .revenue-form { margin-bottom: 20px; }
+        .revenue-form input { width: calc(100% - 22px); padding: 10px; margin: 5px 0; }
+        .revenue-form button { width: 100%; padding: 10px; cursor: pointer; }
+        .total-revenue { font-size: 20px; text-align: center; margin-top: 20px; }
+        .popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; background: #fff; border: 1px solid #ccc; border-radius: 5px; z-index: 10; text-align: center; }
+        .popup button { margin-top: 10px; cursor: pointer; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 5; }
+    </style>
+</head>
+<body>
+    <button onclick="history.back()">Go Back</button>
+    <div class="container">
+        <h2>Daily Revenue</h2>
+        <div class="revenue-form">
+            <input type="number" id="revenueInput" placeholder="Enter daily revenue" step="0.01">
+            <button onclick="addRevenue()">Add Revenue</button>
+        </div>
+        <div class="total-revenue">
+            Total Revenue: $<span id="totalRevenue">0.00</span>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <p id="popupMessage"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <script>
+        let totalRevenue = 0;
+
+        function addRevenue() {
+            let revenueInput = document.getElementById('revenueInput');
+            let revenue = parseFloat(revenueInput.value);
+
+            if (!isNaN(revenue) && revenue >= 0) {
+                totalRevenue += revenue;
+                document.getElementById('totalRevenue').innerText = totalRevenue.toFixed(2);
+                showPopup(`Added: $${revenue.toFixed(2)}<br>Total Revenue: $${totalRevenue.toFixed(2)}`);
+                revenueInput.value = '';
+            } else {
+                showPopup('Please enter a valid revenue amount');
+            }
+        }
+
+        function showPopup(message) {
+            document.getElementById('popupMessage').innerHTML = message;
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Ordering Menu</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .menu { max-width: 600px; margin: auto; }
+        .category { margin: 20px 0; }
+        .category h2 { background: #f4f4f4; padding: 10px; border-left: 5px solid #333; }
+        .item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #ddd; }
+        .item span { flex: 1; }
+        .item input { width: 30px; text-align: center; }
+        .order-button { text-align: center; margin-top: 20px; }
+        .order-button button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="category">
+            <h2>Appetizers</h2>
+            <div class="item">
+                <span>Spring Rolls</span>
+                <button onclick="changeQuantity('springRolls', -1)">-</button>
+                <input type="text" id="springRolls" value="0" readonly>
+                <button onclick="changeQuantity('springRolls', 1)">+</button>
+                <span>$5.00</span>
+            </div>
+            <div class="item">
+                <span>Garlic Bread</span>
+                <button onclick="changeQuantity('garlicBread', -1)">-</button>
+                <input type="text" id="garlicBread" value="0" readonly>
+                <button onclick="changeQuantity('garlicBread', 1)">+</button>
+                <span>$3.50</span>
+            </div>
+        </div>
+        <!-- Repeat similar structure for other categories like Main Courses, Desserts, and Beverages -->
+        <div class="order-button">
+            <button onclick="orderNow()">Order Now</button>
+        </div>
+    </div>
+    <script>
+        function changeQuantity(itemId, change) {
+            let item = document.getElementById(itemId);
+            let currentValue = parseInt(item.value);
+            if (currentValue + change >= 0) {
+                item.value = currentValue + change;
+            }
+        }
+        function orderNow() {
+            alert("Your order has been placed!");
+        }
+    </script>
+</body>
+</html>

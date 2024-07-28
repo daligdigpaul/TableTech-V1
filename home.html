@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Dashboard</title>
+    <style>
+    
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            background-color: #444;
+            color: white;
+            width: 200px;
+            position: fixed;
+            top: 10px;
+            bottom: 0;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+        nav a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            padding-top: 70px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .stat {
+            background-color: #f4f4f4;
+            padding: 20px;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            margin-left: 200px;
+        }
+        
+    </style>
+</head>
+<body>
+  
+
+<header>
+    
+</header>
+
+<nav>
+  <button onclick="history.back()">Go Back</button>
+    <a href="#">Orders</a>
+    <a href="menu.html">Menu</a>
+    <a href="#">Orders</a>
+    <a href="#">Orders</a>
+    
+    
+</nav>
+
+<div class="content">
+    <div class="stats">
+        <div class="stat">
+            <h2>150</h2>
+            <p>Orders Today</p>
+        </div>
+        <div class="stat">
+            <h2>$1200</h2>
+            <p>Revenue Today</p>
+            <a href="revenue.html" ></a>
+        </div>
+        <div class="stat">
+            <h2>30</h2>
+            <p>New Customers</p>
+        </div>
+    </div>
+    <div class="card">
+        <h2>Recent Orders</h2>
+        <table border="1" width="100%" cellpadding="10">
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>#12345</td>
+                <td>John Doe</td>
+                <td>$50.00</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>#12346</td>
+                <td>Jane Smith</td>
+                <td>$75.00</td>
+                <td>Pending</td>
+            </tr>
+            <tr>
+                <td>#12347</td>
+                <td>Michael Johnson</td>
+                <td>$120.00</td>
+                <td>Completed</td>
+            </tr>
+        </table>
+    </div>
+    <div class="card">
+        <h2>Quick Links</h2>
+        <p><a href="#">View Full Orders</a></p>
+        <p><a href="#">Manage Menu</a></p>
+        <p><a href="#">Customer Feedback</a></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Restaurant Dashboard. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

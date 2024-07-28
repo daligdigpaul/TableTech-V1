@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Ordering Menu</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .menu { max-width: 600px; margin: auto; }
+        .category { margin: 20px 0; }
+        .category h2 { background: #f4f4f4; padding: 10px; border-left: 5px solid #333; }
+        .item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
+        .item span { flex: 1; }
+        .item button { flex: 0 0 auto; padding: 5px 10px; cursor: pointer; }
+        .order-button { text-align: center; margin-top: 20px; }
+        .order-button button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        .cart { margin-top: 20px; padding: 10px; border: 1px solid #ddd; }
+        .cart .item { border: none; }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="category">
+            <button onclick="history.back()">Go Back</button>
+            <h2>Appetizers</h2>
+            <div class="item"><span>Crab Wonton</span><span>$3.50</span><button onclick="addToCart('Crab Wonton', 3.50)">Add to Cart</button></div>
+            <div class="item"><span>Egg Rolls</span><span>$3.99</span><button onclick="addToCart('Egg Rolls', 3.99)">Add to Cart</button></div>
+            <div class="item"><span>Fried Chicken Wings</span><span>$5.99</span><button onclick="addToCart('Fried Chicken Wings', 5.99)">Add to Cart</button></div>
+        </div>
+        <div class="category">
+            <h2>Main Courses</h2>
+            <div class="item"><span>Grilled Chicken</span><span>$12.00</span><button onclick="addToCart('Grilled Chicken', 12.00)">Add to Cart</button></div>
+            <div class="item"><span>Vegetable Stir Fry</span><span>$10.00</span><button onclick="addToCart('Vegetable Stir Fry', 10.00)">Add to Cart</button></div>
+            <div class="item"><span>Grilled Ribeye Steak</span><span>$10.00</span><button onclick="addToCart('Grilled Ribeye Steak', 10.00)">Add to Cart</button></div>
+        </div>
+        <div class="category">
+            <h2>Desserts</h2>
+            <div class="item"><span>Cheesecake</span><span>$6.00</span><button onclick="addToCart('Cheesecake', 6.00)">Add to Cart</button></div>
+            <div class="item"><span>Chocolate Cake</span><span>$5.50</span><button onclick="addToCart('Chocolate Cake', 5.50)">Add to Cart</button></div>
+            <div class="item"><span>Strawbana Waffle</span><span>$6.00</span><button onclick="addToCart('Strawbana Waffle', 6.00)">Add to Cart</button></div>
+        </div>
+        <div class="category">
+            <h2>Beverages</h2>
+            <div class="item"><span>Caramel Coffee</span><span>$1.00</span><button onclick="addToCart('Caramel Coffee', 1.00)">Add to Cart</button></div>
+            <div class="item"><span>Green Tea</span><span>$4.00</span><button onclick="addToCart('Green Tea', 4.00)">Add to Cart</button></div>
+        </div>
+    </div>
+
+    <div class="order-button">
+        <button onclick="viewCart()">View Cart</button>
+    </div>
+
+    <div class="cart" id="cart"></div>
+
+    <div class="order-button">
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            cart.push({ name: itemName, price: itemPrice });
+            alert(itemName + ' has been added to your cart.');
+        }
+
+        function viewCart() {
+            const cartDiv = document.getElementById('cart');
+            cartDiv.innerHTML = '<h2>Cart</h2>';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                cartDiv.innerHTML += `<div class="item"><span>${item.name}</span><span>$${item.price.toFixed(2)}</span><button onclick="removeFromCart(${index})">Remove</button></div>`;
+                total += item.price;
+            });
+
+            cartDiv.innerHTML += `<div class="item"><strong>Total:</strong><strong>$${total.toFixed(2)}</strong></div>`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            viewCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            let orderDetails = 'Order Details:\n\n';
+            cart.forEach(item => {
+                orderDetails += `${item.name}: $${item.price.toFixed(2)}\n`;
+            });
+
+            alert(orderDetails + '\nThank you for your order!');
+            cart = [];
+            viewCart();
+        }
+    </script>
+</body>
+</html>     

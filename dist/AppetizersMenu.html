@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Table Tech <Menu></Menu></title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link rel="stylesheet" href="./assest/css/style.css" />
+    <link rel="stylesheet" href="./assest/css/AppetizerMenu.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="app">
+      <div id="header-container"></div>
+      <div class="app-body">
+        <div class="app-body-navigation" id="app-body-navigation"></div>
+        <div class="app-body-main-content">
+          <section class="service-section">
+            <h2>Menu > Appetizers</h2>
+          </section>
+          <section class="transfer-section">
+            <div class="transfer-section-header">
+              <h2>List of All Appetizers</h2>
+              <div class="filter-options">
+                <p>Filter selected:</p>
+                <button class="icon-button">
+                  <i class="ph-funnel"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- ETO YUNG LIST NG appetizers, it's been populate due to the function below 
+                    DO NOT DELETE IT 
+                -->
+            <div class="transfers" id="appetizers-container"></div>
+            
+
+          </section>
+        </div>
+
+        <!-- CRETE NEW LIST -->
+
+        <div class="app-body-sidebar">
+          <section class="payment-section">
+            <h2>Add Appetizers <i class="ph-plus-circle"></i></h2>
+            <div class="payment-section-header">
+              <p>Create a new appetizers</p>
+            </div>
+
+            <div class="faq">
+              <p>Fill Up the from to create new Appetizers</p>
+              <div>
+                <label>Name Appetizers</label>
+                <input type="text" placeholder="Name Appetizers" />
+              </div>
+              <div>
+                <label>Price</label>
+                <input type="text" placeholder="₱:Price" />
+              </div>
+              <div>
+                <label>Image</label>
+                <div class="button-wrapper">
+                  <span class="label"> Upload Image File </span>
+
+                  <input
+                    type="file"
+                    name="upload"
+                    id="upload"
+                    class="upload-box"
+                    placeholder="Upload File"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="payment-section-footer">
+              <button class="save-button">Create</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="./script.js"></script>
+    <script src="./assest/js/loadStaticfile.js"></script>
+
+    <script>
+      // eto yung function and create and show ng list ng appetizer
+      document.addEventListener("DOMContentLoaded", function () {
+        const appetizers = [
+          {
+            name: "Crab Wonton",
+            category: "Appetizers",
+            status: "Available",
+            dateAdded: "28 Oct. 24",
+            price: "₱ 180",
+            imgSrc: "./assest/img/crabRangoon.jfif",
+          },
+          {
+            name: "Spring Rolls",
+            category: "Appetizers",
+            status: "Available",
+            dateAdded: "25 Oct. 24",
+            price: "₱ 120",
+            imgSrc: "./assest/img/springRolls.jfif",
+          },
+          {
+            name: "Stuffed Mushrooms",
+            category: "Appetizers",
+            status: "Available",
+            dateAdded: "22 Oct. 24",
+            price: "₱ 150",
+            imgSrc: "./assest/img/stuffedMushrooms.jfif",
+          },
+          {
+            name: "Garlic Bread",
+            category: "Appetizers",
+            status: "Available",
+            dateAdded: "20 Oct. 24",
+            price: "₱ 100",
+            imgSrc: "./assest/img/garlicBread.jfif",
+          },
+          {
+            name: "Bruschetta",
+            category: "Appetizers",
+            status: "Available",
+            dateAdded: "18 Oct. 24",
+            price: "₱ 130",
+            imgSrc: "./assest/img/bruschetta.jfif",
+          },
+        ];
+
+        const container = document.getElementById("appetizers-container");
+
+        appetizers.forEach((appetizer) => {
+          const appetizerElement = document.createElement("div");
+          appetizerElement.classList.add("transfer");
+
+          appetizerElement.innerHTML = `
+            <div class="transfer-logo">
+                <img src="${appetizer.imgSrc}" alt="${appetizer.name}" />
+            </div>
+            <dl class="transfer-details">
+                <div>
+                    <dt>${appetizer.name}</dt>
+                    <dd>${appetizer.category}</dd>
+                </div>
+                <div>
+                    <dt>${appetizer.status}</dt>
+                    <dd>Status</dd>
+                </div>
+                <div>
+                    <dt>${appetizer.dateAdded}</dt>
+                    <dd>Date Added</dd>
+                </div>
+            </dl>
+            <div class="transfer-number">
+                ${appetizer.price}
+            </div>
+        `;
+
+          container.appendChild(appetizerElement);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Table Tech <Menu></Menu></title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link rel="stylesheet" href="./assest/css/style.css" />
+    <link rel="stylesheet" href="./assest/css/order.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="app">
+      <div id="header-container"></div>
+      <div class="app-body">
+        <div class="app-body-navigation" id="app-body-navigation"></div>
+        <div class="app-body-main-content">
+          <section class="service-section">
+            <h2>Orders</h2>
+            <div class="service-section-header">
+              <div class="search-field">
+                <i class="ph-magnifying-glass"></i>
+                <input type="text" placeholder="Search..." />
+              </div>
+              <div class="search-field">
+                <input type="date" id="date" name="date" />
+                <i class="ph"></i>
+              </div>
+              <button class="flat-button">Search</button>
+              <div class="filter-button-wrapper">
+                <button class="action-button filter jsFilter flat-button">
+                  <span>Filter</span
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-filter"
+                  >
+                    <polygon
+                      points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"
+                    />
+                  </svg>
+                </button>
+                <div class="filter-menu">
+                  <!-- <label>Category</label>
+                  <select>
+                    <option>All Categories</option>
+                    <option>Furniture</option>
+                    <option>Decoration</option>
+                    <option>Kitchen</option>
+                    <option>Bathroom</option>
+                  </select> -->
+                  <label>Status</label>
+                  <select>
+                    <option>All Status</option>
+                    <option>Active</option>
+                    <option>Processing</option>
+                    <option>Completed</option>
+                    <option>Cancelled</option>
+                  </select>
+                  <div class="filter-menu-buttons">
+                    <button class="filter-button reset">Reset</button>
+                    <button class="filter-button apply">Apply</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+         
+            <div class="mobile-only">
+              <button class="flat-button">Toggle search</button>
+            </div>
+
+            <!-- <div class="service-section-footer">
+					<p>The order menu on the dashboard provides streamlined access to manage and process all incoming orders efficiently.</p>
+				</div> -->
+
+            <div class="products-area-wrapper tableView">
+              <div class="products-header">
+                <div class="product-cell image">
+                  Order ID
+                  <button class="sort-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-cell customer">
+                  Customer<button class="sort-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="product-cell stock">
+                  Items Ordered<button class="sort-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-cell price">
+                  Total Amount<button class="sort-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-cell sales">
+                  Order Date<button class="sort-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-cell status-cell">
+                  Order Status<button class="sort-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M496.1 138.3L375.7 17.9c-7.9-7.9-20.6-7.9-28.5 0L226.9 138.3c-7.9 7.9-7.9 20.6 0 28.5 7.9 7.9 20.6 7.9 28.5 0l85.7-85.7v352.8c0 11.3 9.1 20.4 20.4 20.4 11.3 0 20.4-9.1 20.4-20.4V81.1l85.7 85.7c7.9 7.9 20.6 7.9 28.5 0 7.9-7.8 7.9-20.6 0-28.5zM287.1 347.2c-7.9-7.9-20.6-7.9-28.5 0l-85.7 85.7V80.1c0-11.3-9.1-20.4-20.4-20.4-11.3 0-20.4 9.1-20.4 20.4v352.8l-85.7-85.7c-7.9-7.9-20.6-7.9-28.5 0-7.9 7.9-7.9 20.6 0 28.5l120.4 120.4c7.9 7.9 20.6 7.9 28.5 0l120.4-120.4c7.8-7.9 7.8-20.7-.1-28.5z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-cell">View Details</div>
+              </div>
+              <div class="orders-container"></div>
+              <!-- <div class="products-row">
+                <button class="cell-more-button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-more-vertical"
+                  >
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="12" cy="5" r="1" />
+                    <circle cx="12" cy="19" r="1" />
+                  </svg>
+                </button>
+                <div class="product-cell image">
+                  <span class="cell-label">Order #:</span>
+                  <span>789012</span>
+                </div>
+                <div class="product-cell">
+                  <span class="cell-label">Customer:</span>
+                  Alex Smith
+                </div>
+                <div class="product-cell stock">
+                  <span class="cell-label">Items Orders: </span> 3 x Crab Wonton
+                  2 x Cheesecake
+                </div>
+                <div class="product-cell price">
+                  <span class="cell-label">Total Amount:</span>
+                  ₱500.00
+                </div>
+                <div class="product-cell sales">
+                  <span class="cell-label">Order Date:</span>
+                  July 27, 2024
+                </div>
+                <div class="product-cell status-cell">
+                  <span class="cell-label">Order Status:</span>
+                  <span class="status active">Active</span>
+                </div>
+                <div class="product-cell status-cell">
+                  <span class="cell-label">Order Status:</span>
+                  <button class="flat-button">Details</button>
+                </div>
+              </div> -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="./script.js"></script>
+    <script src="./assest/js/loadStaticfile.js"></script>
+    <script>
+      // static data
+      const orders = [
+        {
+          orderId: "789012",
+          customer: "Alex Smith",
+          itemsOrdered: "Crab Wonton, Cheesecake",
+          totalAmount: "₱500.00",
+          orderDate: "July 27, 2024",
+          orderStatus: "Active",
+        },
+        {
+          orderId: "789013",
+          customer: "Maria Garcia",
+          itemsOrdered: "Cheesecake, Caramel Coffee",
+          totalAmount: "₱350.00",
+          orderDate: "July 26, 2024",
+          orderStatus: "Processing",
+        },
+        {
+          orderId: "789014",
+          customer: "John Doe",
+          itemsOrdered: "Grilled Chicken, Crab Wonton",
+          totalAmount: "₱700.00",
+          orderDate: "July 25, 2024",
+          orderStatus: "Completed",
+        },
+        {
+          orderId: "789015",
+          customer: "Emily Johnson",
+          itemsOrdered: "Cheesecake, Crab Wonton",
+          totalAmount: "₱600.00",
+          orderDate: "July 24, 2024",
+          orderStatus: "Cancelled",
+        },
+        {
+          orderId: "789016",
+          customer: "Michael Brown",
+          itemsOrdered: "Caramel Coffee, Grilled Chicken",
+          totalAmount: "₱450.00",
+          orderDate: "July 23, 2024",
+          orderStatus: "Active",
+        },
+        {
+          orderId: "789017",
+          customer: "Linda Davis",
+          itemsOrdered: "Crab Wonton, Caramel Coffee",
+          totalAmount: "₱550.00",
+          orderDate: "July 22, 2024",
+          orderStatus: "Processing",
+        },
+        {
+          orderId: "789018",
+          customer: "James Wilson",
+          itemsOrdered: "Grilled Chicken, Cheesecake",
+          totalAmount: "₱400.00",
+          orderDate: "July 21, 2024",
+          orderStatus: "Completed",
+        },
+        {
+          orderId: "789019",
+          customer: "Patricia Moore",
+          itemsOrdered: "Cheesecake, Crab Wonton",
+          totalAmount: "₱450.00",
+          orderDate: "July 20, 2024",
+          orderStatus: "Cancelled",
+        },
+        {
+          orderId: "789020",
+          customer: "Robert Taylor",
+          itemsOrdered: "Caramel Coffee, Cheesecake",
+          totalAmount: "₱500.00",
+          orderDate: "July 19, 2024",
+          orderStatus: "Active",
+        },
+        {
+          orderId: "789021",
+          customer: "Jennifer Anderson",
+          itemsOrdered: "Grilled Chicken, Caramel Coffee",
+          totalAmount: "₱350.00",
+          orderDate: "July 18, 2024",
+          orderStatus: "Processing",
+        },
+        {
+          orderId: "789022",
+          customer: "William Thomas",
+          itemsOrdered: "Crab Wonton, Grilled Chicken",
+          totalAmount: "₱700.00",
+          orderDate: "July 17, 2024",
+          orderStatus: "Completed",
+        },
+        {
+          orderId: "789023",
+          customer: "Elizabeth Harris",
+          itemsOrdered: "Cheesecake, Caramel Coffee",
+          totalAmount: "₱450.00",
+          orderDate: "July 16, 2024",
+          orderStatus: "Cancelled",
+        },
+        {
+          orderId: "789024",
+          customer: "David Clark",
+          itemsOrdered: "Caramel Coffee, Crab Wonton",
+          totalAmount: "₱400.00",
+          orderDate: "July 15, 2024",
+          orderStatus: "Active",
+        },
+        {
+          orderId: "789025",
+          customer: "Sophia Lewis",
+          itemsOrdered: "Grilled Chicken, Cheesecake",
+          totalAmount: "₱600.00",
+          orderDate: "July 14, 2024",
+          orderStatus: "Processing",
+        },
+        {
+          orderId: "789026",
+          customer: "Daniel Walker",
+          itemsOrdered: "Cheesecake, Caramel Coffee",
+          totalAmount: "₱500.00",
+          orderDate: "July 13, 2024",
+          orderStatus: "Completed",
+        },
+        {
+          orderId: "789027",
+          customer: "Olivia Hall",
+          itemsOrdered: "Grilled Chicken, Crab Wonton",
+          totalAmount: "₱450.00",
+          orderDate: "July 12, 2024",
+          orderStatus: "Cancelled",
+        },
+        {
+          orderId: "789028",
+          customer: "Ethan Allen",
+          itemsOrdered: "Caramel Coffee, Cheesecake",
+          totalAmount: "₱350.00",
+          orderDate: "July 11, 2024",
+          orderStatus: "Active",
+        },
+        {
+          orderId: "789029",
+          customer: "Ava Young",
+          itemsOrdered: "Cheesecake, Grilled Chicken",
+          totalAmount: "₱400.00",
+          orderDate: "July 10, 2024",
+          orderStatus: "Processing",
+        },
+        {
+          orderId: "789030",
+          customer: "Mason King",
+          itemsOrdered: "Crab Wonton, Caramel Coffee",
+          totalAmount: "₱500.00",
+          orderDate: "July 9, 2024",
+          orderStatus: "Completed",
+        },
+        {
+          orderId: "789031",
+          customer: "Isabella Scott",
+          itemsOrdered: "Grilled Chicken, Cheesecake",
+          totalAmount: "₱600.00",
+          orderDate: "July 8, 2024",
+          orderStatus: "Cancelled",
+        },
+        {
+          orderId: "789032",
+          customer: "Liam Carter",
+          itemsOrdered: "Cheesecake, Crab Wonton",
+          totalAmount: "₱350.00",
+          orderDate: "July 7, 2024",
+          orderStatus: "Active",
+        },
+        {
+          orderId: "789033",
+          customer: "Charlotte Adams",
+          itemsOrdered: "Caramel Coffee, Grilled Chicken",
+          totalAmount: "₱700.00",
+          orderDate: "July 6, 2024",
+          orderStatus: "Processing",
+        },
+        {
+          orderId: "789034",
+          customer: "James Roberts",
+          itemsOrdered: "Crab Wonton, Cheesecake",
+          totalAmount: "₱550.00",
+          orderDate: "July 5, 2024",
+          orderStatus: "Completed",
+        },
+        {
+          orderId: "789035",
+          customer: "Amelia Nelson",
+          itemsOrdered: "Grilled Chicken, Caramel Coffee",
+          totalAmount: "₱400.00",
+          orderDate: "July 4, 2024",
+          orderStatus: "Cancelled",
+        },
+        {
+          orderId: "789036",
+          customer: "Benjamin Carter",
+          itemsOrdered: "Cheesecake, Crab Wonton",
+          totalAmount: "₱450.00",
+          orderDate: "July 3, 2024",
+          orderStatus: "Active",
+        },
+        {
+          orderId: "789037",
+          customer: "Harper Evans",
+          itemsOrdered: "Caramel Coffee, Grilled Chicken",
+          totalAmount: "₱500.00",
+          orderDate: "July 2, 2024",
+          orderStatus: "Processing",
+        },
+        {
+          orderId: "789038",
+          customer: "Jacob Mitchell",
+          itemsOrdered: "Cheesecake, Crab Wonton",
+          totalAmount: "₱400.00",
+          orderDate: "July 1, 2024",
+          orderStatus: "Completed",
+        },
+      ];
+
+      function populateOrderList(orders) {
+        const container = document.querySelector(".orders-container");
+        container.innerHTML = ""; // Clear existing content
+
+        orders.forEach((order) => {
+          const orderHTML = `
+            <div class="products-row">
+                <button class="cell-more-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+                        <circle cx="12" cy="12" r="1"/>
+                        <circle cx="12" cy="5" r="1"/>
+                        <circle cx="12" cy="19" r="1"/>
+                    </svg>
+                </button>
+                <div class="product-cell image">
+                    <span class="cell-label">Order #:</span>
+                    <span>${order.orderId}</span>
+                </div>
+                <div class="product-cell">
+                    <span class="cell-label">Customer:</span>
+                    ${order.customer}
+                </div>
+                <div class="product-cell stock">
+                    <span class="cell-label">Items Ordered:</span>
+                    ${order.itemsOrdered}
+                </div>
+                <div class="product-cell price">
+                    <span class="cell-label">Total Amount:</span>
+                    ${order.totalAmount}
+                </div>
+                <div class="product-cell sales">
+                    <span class="cell-label">Order Date:</span>
+                    ${order.orderDate}
+                </div>
+                <div class="product-cell status-cell">
+                    <span class="cell-label">Order Status:</span>
+                    <span class="status ${order.orderStatus.toLowerCase()}">${
+            order.orderStatus
+          }</span>
+                </div>
+                <div class="product-cell status-cell">
+                    <span class="cell-label">Details:</span>
+                    <button class="flat-button">Details</button>
+                </div>
+            </div>
+        `;
+          container.innerHTML += orderHTML; // Append each order to the container
+        });
+      }
+
+      // Populate the order list with sample data
+      populateOrderList(orders);
+
+      document
+        .querySelector(".jsFilter")
+        .addEventListener("click", function () {
+          document.querySelector(".filter-menu").classList.toggle("active");
+        });
+    </script>
+  </body>
+</html>
